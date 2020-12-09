@@ -4,43 +4,50 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Shop Homepage - Start Bootstrap Template</title>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
 </head>
 
 <body>
 <div class="container">
-  <!-- Search form -->
-  <input class="form-control mb-5 mt-5" type="text" placeholder="Search" aria-label="Search">
-  <div class="card-deck">
-    {% if movies %}
-    {% for movie in movies %}
-    <div class="col-sm-3 d-flex align-items-stretch projects">
-      <div class="card bm-4">
-        <img class="img-thumbnail" src="" alt={{movie.title}}>
-        <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-          <p class="text">Rating: {{movie.avg_vote}}</p>
-          <p class="card-text">{{movie.description}}</p>
+    <!-- Search form -->
+    <form class="form-inlines" action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <div class="card-deck">
+        {% if movies %}
+        {% for movie in movies %}
+        <div class="col-sm-3 d-flex align-items-stretch projects">
+            <div class="card bm-4">
+                <img class="img-thumbnail" src="" alt={{movie.title}}>
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <h5 class="card-title">{{movie.original_title}}</h5>
+                    <p class="text">Rating: {{movie.avg_vote}}</p>
+                    <p class="card-text">{{movie.description}}</p>
+                </div>
+            </div>
         </div>
-      </div>
+
+        {% endfor %}
+        {% else %}
+        <p>No movies are available.</p>
+        {% endif %}
     </div>
 
-    {% endfor %}
-    {% else %}
-    <p>No movies are available.</p>
-    {% endif %}
-  </div>
-
-  <div class="pagination">
+    <div class="pagination">
     <span class="step-links">
         {% if movies.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -56,7 +63,7 @@
             <a href="?page={{ movies.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-  </div>
+    </div>
 
 </div>
 <!-- /.container -->
