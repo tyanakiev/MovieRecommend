@@ -19,11 +19,10 @@
 <body>
 <div class="container">
     <!-- Search form -->
-    <form class="form-inlines" action="" method="POST">
+    <form class="form-inline d-flex justify-content-center md-form form-sm mt-5 mb-5" action="" method="POST">
         {% csrf_token %}
         {{ form }}
-        <!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
     </form>
 
     <div class="card-deck">
@@ -33,10 +32,10 @@
             <div class="card bm-4">
                 <img class="img-thumbnail" src="" alt={{movie.title}}>
                 <div class="card-body">
-                    <h5 class="card-title">{{movie.title}}</h5>
-                    <h5 class="card-title">{{movie.original_title}}</h5>
+                    <h5 class="card-title">{{movie.primaryTitle}}</h5>
+                    <h5 class="card-title">{{movie.originalTitle}}</h5>
                     <p class="text">Rating: {{movie.avg_vote}}</p>
-                    <p class="card-text">{{movie.description}}</p>
+                    <p class="card-text">{{movie.genres}}</p>
                 </div>
             </div>
         </div>
