@@ -33,9 +33,8 @@
                 <img class="img-thumbnail" src="" alt={{movie.title}}>
                 <div class="card-body">
                     <h5 class="card-title">{{movie.primaryTitle}}</h5>
-                    <h5 class="card-title">{{movie.originalTitle}}</h5>
-                    <p class="text">Rating: {{movie.avg_vote}}</p>
-                    <p class="card-text">{{movie.genres}}</p>
+                    <p class="text">Rating: {{movie.rating.averageRating}}</p>
+                    <p class="card-text">Genres: {{movie.genres}}</p>
                 </div>
             </div>
         </div>
